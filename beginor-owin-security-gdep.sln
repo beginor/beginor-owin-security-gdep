@@ -1,0 +1,22 @@
+
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{BD8B25DC-AE94-488E-B800-D3200BF1CAD8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Beginor.Owin.Security.Gdep", "src\Beginor.Owin.Security.Gdep\Beginor.Owin.Security.Gdep.csproj", "{2D1537B2-8429-420D-B4EF-908F95DC3ADC}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2D1537B2-8429-420D-B4EF-908F95DC3ADC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2D1537B2-8429-420D-B4EF-908F95DC3ADC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2D1537B2-8429-420D-B4EF-908F95DC3ADC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2D1537B2-8429-420D-B4EF-908F95DC3ADC}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{2D1537B2-8429-420D-B4EF-908F95DC3ADC} = {BD8B25DC-AE94-488E-B800-D3200BF1CAD8}
+	EndGlobalSection
+EndGlobal
