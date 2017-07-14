@@ -5,6 +5,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{BD8B25DC-AE9
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Beginor.Owin.Security.Gdep", "src\Beginor.Owin.Security.Gdep\Beginor.Owin.Security.Gdep.csproj", "{2D1537B2-8429-420D-B4EF-908F95DC3ADC}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{7223036C-85D9-4AB0-8866-791964E65F5E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GdepTest", "test\GdepTest\GdepTest.csproj", "{99F1AADD-9A19-45EB-89CF-839EE05AE199}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,8 +19,13 @@ Global
 		{2D1537B2-8429-420D-B4EF-908F95DC3ADC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2D1537B2-8429-420D-B4EF-908F95DC3ADC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2D1537B2-8429-420D-B4EF-908F95DC3ADC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{99F1AADD-9A19-45EB-89CF-839EE05AE199}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{99F1AADD-9A19-45EB-89CF-839EE05AE199}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{99F1AADD-9A19-45EB-89CF-839EE05AE199}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{99F1AADD-9A19-45EB-89CF-839EE05AE199}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{2D1537B2-8429-420D-B4EF-908F95DC3ADC} = {BD8B25DC-AE94-488E-B800-D3200BF1CAD8}
+		{99F1AADD-9A19-45EB-89CF-839EE05AE199} = {7223036C-85D9-4AB0-8866-791964E65F5E}
 	EndGlobalSection
 EndGlobal
