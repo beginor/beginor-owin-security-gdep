@@ -1,7 +1,7 @@
 ﻿(function() {
     $(document).ready(function () {
         $.ajax({
-            url: 'rest/account/external-login',
+            url: '/rest/account/external-login',
             success: function (result) {
                 var html = [];
                 result.forEach(function (oauth) {

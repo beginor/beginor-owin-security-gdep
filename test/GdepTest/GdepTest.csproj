@@ -80,6 +80,7 @@
     <Compile Include="Startup.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Models\ExternalLoginModel.cs" />
+    <Compile Include="Adapter.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="wwwroot\" />
