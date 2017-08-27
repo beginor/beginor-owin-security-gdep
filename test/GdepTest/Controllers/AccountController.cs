@@ -1,9 +1,8 @@
 ﻿using System.Net;
 using System.Net.Http;
 using System.Web.Http;
-using Microsoft.Owin.Security;
 using GdepTest.Models;
-using System.Security.Claims;
+using Microsoft.Owin.Security;
 
 namespace GdepTest.Controllers {
 
@@ -37,21 +36,6 @@ namespace GdepTest.Controllers {
             var isAuth = info.ExternalIdentity.IsAuthenticated;
             var msg = $"User: {name} , is authenticated: {isAuth}";
             return Ok(msg);
-        }
-
-        [HttpGet, Route("test")]
-        public IHttpActionResult Test() {
-            var identity = new ClaimsIdentity();
-            var idClaim = new Claim(
-                ClaimTypes.NameIdentifier, "test"
-            );
-            identity.AddClaim(idClaim);
-            var nameClaim = new Claim(
-                ClaimTypes.Name, "test"
-            );
-            identity.AddClaim(nameClaim);
-            AuthManager.SignIn(identity);
-            return Ok(this.User.Identity.Name);
         }
 
     }
