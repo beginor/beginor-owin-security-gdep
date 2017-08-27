@@ -20,6 +20,8 @@ namespace GdepTest {
 
         private static void ConfigWebApi(IAppBuilder app) {
             var config = new HttpConfiguration();
+            var xml = config.Formatters.XmlFormatter;
+            config.Formatters.Remove(xml);
             config.MapHttpAttributeRoutes();
             config.Routes.MapHttpRoute(
                 name: "DefaultApi",
@@ -55,7 +57,7 @@ namespace GdepTest {
                 EnableHtml5LocationMode = false,
                 RootDirectory = Path.Combine(
                     AppDomain.CurrentDomain.BaseDirectory,
-                    "../wwwroot"
+                    "../"
                 )
             };
             app.UseStaticFile(staticFileOptions);
