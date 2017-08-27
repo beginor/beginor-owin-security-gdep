@@ -12,7 +12,7 @@ namespace GdepTest {
 
         public static void Main(string[] args) {
             // Define listening ip and port;
-            const string ip = "127.0.0.1";
+            var ip = IPAddress.Loopback;
             const int port = 8088;
             // start the server;
             using (var server = BuildNowinServer(ip, port)) {
@@ -36,7 +36,7 @@ namespace GdepTest {
             }
         }
 
-        private static INowinServer BuildNowinServer(string ip, int port) {
+        private static INowinServer BuildNowinServer(IPAddress ip, int port) {
             // create a new AppBuilder
             var appBuilder = new AppBuilder();
             // init nowin's owin server factory.
@@ -47,7 +47,7 @@ namespace GdepTest {
             var serverBuilder = new ServerBuilder();
             var capabilities = appBuilder.Properties[OwinKeys.ServerCapabilitiesKey];
             serverBuilder
-                .SetAddress(IPAddress.Parse(ip))
+                .SetAddress(ip)
                 .SetPort(port)
                 .SetOwinApp(appBuilder.Build())
                 .SetOwinCapabilities((IDictionary<string, object>)capabilities);
