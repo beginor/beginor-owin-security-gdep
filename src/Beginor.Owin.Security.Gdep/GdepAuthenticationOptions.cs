@@ -20,6 +20,10 @@ namespace Beginor.Owin.Security.Gdep {
 
         public string UserInformationEndpoint { get; set; }
 
+        public string CallbackUrl { get; set; } = "/signin-gdep";
+
+        public bool ForceHttpsRedirect { get; set; }
+
         public ICertificateValidator BackchannelCertificateValidator { get; set; }
 
         public TimeSpan BackchannelTimeout { get; set; }
@@ -31,7 +35,7 @@ namespace Beginor.Owin.Security.Gdep {
             set { Description.Caption = value; }
         }
 
-        public PathString CallbackPath { get; set; }
+        public PathString CallbackPath => new PathString(CallbackUrl);
 
         public string SignInAsAuthenticationType { get; set; }
 
@@ -45,12 +49,10 @@ namespace Beginor.Owin.Security.Gdep {
 
         public GdepAuthenticationOptions() : base(Constants.DefaultAuthenticationType) {
             Caption = Constants.DefaultAuthenticationType;
-            CallbackPath = new PathString("/signin-gdep");
             AuthenticationMode = AuthenticationMode.Passive;
             Scope = new List<string>();
             BackchannelTimeout = TimeSpan.FromSeconds(60);
             SendAppSecretProof = true;
-
             AuthorizationEndpoint = Constants.AuthorizationEndpoint;
             TokenEndpoint = Constants.TokenEndpoint;
             UserInformationEndpoint = Constants.UserInformationEndpoint;

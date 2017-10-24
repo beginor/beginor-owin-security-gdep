@@ -64,7 +64,8 @@ namespace Beginor.Owin.Security.Gdep {
                     return new AuthenticationTicket(null, properties);
                 }
 
-                var requestPrefix = Request.Scheme + "://" + Request.Host;
+                string scheme = GetRedirectScheme();
+                var requestPrefix = scheme + Uri.SchemeDelimiter + Request.Host;
                 var redirectUri = requestPrefix + Request.PathBase + Options.CallbackPath;
 
                 var tokenRequest = new Dictionary<string, string> {
@@ -137,6 +138,14 @@ namespace Beginor.Owin.Security.Gdep {
             }
         }
 
+        private string GetRedirectScheme() {
+            var scheme = Request.Scheme;
+            if (Options.ForceHttpsRedirect) {
+                scheme = Uri.UriSchemeHttps;
+            }
+            return scheme;
+        }
+
         protected override Task ApplyResponseChallengeAsync() {
             if (Response.StatusCode != 401) {
                 return Task.FromResult<object>(null);
@@ -144,7 +153,8 @@ namespace Beginor.Owin.Security.Gdep {
 
             var challenge = Helper.LookupChallenge(Options.AuthenticationType, Options.AuthenticationMode);
             if (challenge != null) {
-                var baseUri = Request.Scheme + Uri.SchemeDelimiter + Request.Host + Request.PathBase;
+                var scheme = GetRedirectScheme();
+                var baseUri = scheme + Uri.SchemeDelimiter + Request.Host + Request.PathBase;
                 var currentUri = baseUri + Request.Path + Request.QueryString;
                 var redirectUri = baseUri + Options.CallbackPath;
 
