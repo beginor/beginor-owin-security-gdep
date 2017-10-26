@@ -40,11 +40,11 @@ namespace GdepTest {
             app.UseExternalSignInCookie();
             var appSettings = ConfigurationManager.AppSettings;
             // oauth
-            var oauthOptions = new GdepAuthenticationOptions() {
+            var oauthOptions = new GdepAuthenticationOptions {
                 Caption = appSettings["oauth-caption"],
                 AppId = appSettings["oauth-id"],
                 AppSecret = appSettings["oauth-secret"],
-                Scope = appSettings["oauth-scope"].Split(',')
+                Scope = appSettings["oauth-scope"].Split(','),
             };
             app.UseGdepAuthentication(oauthOptions);
         }

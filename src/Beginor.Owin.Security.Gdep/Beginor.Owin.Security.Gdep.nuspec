@@ -2,7 +2,7 @@
 <package >
   <metadata>
     <id>Beginor.Owin.Security.Gdep</id>
-    <version>0.2.0</version>
+    <version>1.1.0</version>
     <title>Beginor.Owin.Security.Gdep</title>
     <authors>beginor</authors>
     <owners>beginor</owners>
@@ -13,6 +13,8 @@
         Middleware that enables an application to support GDEP's OAuth 2.0 authentication workflow.
     </summary>
     <releaseNotes>
+        1.1.0: Add `GetRequestScheme` to `GdepAuthenticationOptions`;
+        1.0.0: Replace `CallbackUrl` and `ForceHttpsRedirect` with `SchemeForwardedHeader`, support deploy under proxy like nginx.
         0.2.0: add `CallbackUrl` and `ForceHttpsRedirect` to options;
         0.1.0: init release;
     </releaseNotes>

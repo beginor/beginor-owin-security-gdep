@@ -22,7 +22,7 @@ namespace Beginor.Owin.Security.Gdep {
 
         public string CallbackUrl { get; set; } = "/signin-gdep";
 
-        public bool ForceHttpsRedirect { get; set; }
+        public string SchemeForwardedHeader { get; set; } = "X-Forwarded-Proto";
 
         public ICertificateValidator BackchannelCertificateValidator { get; set; }
 
@@ -56,6 +56,17 @@ namespace Beginor.Owin.Security.Gdep {
             AuthorizationEndpoint = Constants.AuthorizationEndpoint;
             TokenEndpoint = Constants.TokenEndpoint;
             UserInformationEndpoint = Constants.UserInformationEndpoint;
+        }
+
+        public string GetRequestScheme(IOwinRequest request) {
+            var scheme = request.Scheme;
+            var headers = request.Headers;
+            if (headers.TryGetValue(SchemeForwardedHeader, out var values)) {
+                if (values.Length > 0) {
+                    scheme = values[0];
+                }
+            }
+            return scheme;
         }
 
     }
