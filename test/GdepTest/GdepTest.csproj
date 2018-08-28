@@ -13,16 +13,16 @@
   <ItemGroup>
     <PackageReference Include="Beginor.Owin.Security.Aes" Version="0.2.2" />
     <PackageReference Include="Beginor.Owin.StaticFile" Version="0.3.1" />
-    <PackageReference Include="Microsoft.AspNet.Identity.Core" Version="2.2.1" />
-    <PackageReference Include="Microsoft.AspNet.Identity.Owin" Version="2.2.1" />
-    <PackageReference Include="Microsoft.AspNet.WebApi.Client" Version="5.2.3" />
-    <PackageReference Include="Microsoft.AspNet.WebApi.Core" Version="5.2.3" />
-    <PackageReference Include="Microsoft.AspNet.WebApi.Owin" Version="5.2.3" />
-    <PackageReference Include="Microsoft.Owin" Version="3.1.0" />
-    <PackageReference Include="Microsoft.Owin.Security" Version="3.1.0" />
-    <PackageReference Include="Microsoft.Owin.Security.Cookies" Version="3.1.0" />
-    <PackageReference Include="Microsoft.Owin.Security.OAuth" Version="3.1.0" />
-    <PackageReference Include="Newtonsoft.Json" Version="10.0.3" />
+    <PackageReference Include="Microsoft.AspNet.Identity.Core" Version="2.2.2" />
+    <PackageReference Include="Microsoft.AspNet.Identity.Owin" Version="2.2.2" />
+    <PackageReference Include="Microsoft.AspNet.WebApi.Client" Version="5.2.6" />
+    <PackageReference Include="Microsoft.AspNet.WebApi.Core" Version="5.2.6" />
+    <PackageReference Include="Microsoft.AspNet.WebApi.Owin" Version="5.2.6" />
+    <PackageReference Include="Microsoft.Owin" Version="4.0.0" />
+    <PackageReference Include="Microsoft.Owin.Security" Version="4.0.0" />
+    <PackageReference Include="Microsoft.Owin.Security.Cookies" Version="4.0.0" />
+    <PackageReference Include="Microsoft.Owin.Security.OAuth" Version="4.0.0" />
+    <PackageReference Include="Newtonsoft.Json" Version="11.0.2" />
     <PackageReference Include="Nowin" Version="0.26.0" />
     <PackageReference Include="Owin" Version="1.0" />
   </ItemGroup>
