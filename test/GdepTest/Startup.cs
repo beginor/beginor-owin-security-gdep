@@ -57,7 +57,7 @@ namespace GdepTest {
                 EnableHtml5LocationMode = false,
                 RootDirectory = Path.Combine(
                     AppDomain.CurrentDomain.BaseDirectory,
-                    "../"
+                    "../../../wwwroot"
                 )
             };
             app.UseStaticFile(staticFileOptions);
