@@ -45,6 +45,9 @@ namespace GdepTest {
                 AppId = appSettings["oauth-id"],
                 AppSecret = appSettings["oauth-secret"],
                 Scope = appSettings["oauth-scope"].Split(','),
+                AuthorizationEndpoint = appSettings["oauth-authorize"],
+                TokenEndpoint = appSettings["oauth-token"],
+                UserInformationEndpoint = appSettings["oauth-user"]
             };
             app.UseGdepAuthentication(oauthOptions);
         }
