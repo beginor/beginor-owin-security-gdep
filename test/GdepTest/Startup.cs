@@ -1,9 +1,12 @@
 ﻿using System;
 using System.Configuration;
 using System.IO;
+using System.Security.Claims;
+using System.Threading.Tasks;
 using System.Web.Http;
 using Beginor.Owin.Security.Aes;
 using Beginor.Owin.Security.Gdep;
+using Beginor.Owin.Security.Gdep.Provider;
 using Beginor.Owin.StaticFile;
 using Microsoft.Owin.Security.DataProtection;
 using Owin;
@@ -41,14 +44,90 @@ namespace GdepTest {
             var appSettings = ConfigurationManager.AppSettings;
             // oauth
             var oauthOptions = new GdepAuthenticationOptions {
+                AuthenticationType = appSettings["oauth-type"],
                 Caption = appSettings["oauth-caption"],
                 AppId = appSettings["oauth-id"],
                 AppSecret = appSettings["oauth-secret"],
                 Scope = appSettings["oauth-scope"].Split(','),
                 AuthorizationEndpoint = appSettings["oauth-authorize"],
                 TokenEndpoint = appSettings["oauth-token"],
-                UserInformationEndpoint = appSettings["oauth-user"]
+                UserInformationEndpoint = appSettings["oauth-user"],
+                CallbackUrl = appSettings["oauth-callback"]
             };
+            // setup provider
+            var authProvider = new GdepAuthenticationProvider();
+            authProvider.OnAuthenticated = (context) => {
+                var user = context.User;
+                // Console.WriteLine(user.ToString());
+                var status = user.Value<int>("status");
+                // extract user info to identity when status is 200;
+                if (status == 200) {
+                    var data = user.GetValue("data");
+                    var code = data.Value<string>("user_code");
+                    var name = data.Value<string>("user_name");
+                    // var email = (string)data["user"]["email"];
+                    // var mobile = (string)data["user"]["mobi_tel"];
+                    // var addr = (string)data["user"]["user_addr"];
+                    // var type = (int)data["user"]["user_type"];
+                    var identity = new ClaimsIdentity(
+                        oauthOptions.AuthenticationType,
+                        ClaimsIdentity.DefaultNameClaimType,
+                        ClaimsIdentity.DefaultRoleClaimType
+                    );
+                    identity.AddClaim(
+                        new Claim(
+                            ClaimTypes.NameIdentifier,
+                            code,
+                            ClaimValueTypes.String,
+                            oauthOptions.AuthenticationType
+                        )
+                    );
+                    identity.AddClaim(
+                        new Claim(
+                            ClaimTypes.Name,
+                            code,
+                            ClaimValueTypes.String,
+                            oauthOptions.AuthenticationType
+                        )
+                    );
+                    //identity.AddClaim(
+                    //    new Claim(
+                    //        ClaimTypes.Surname,
+                    //        name,
+                    //        ClaimValueTypes.String,
+                    //        oauthOptions.AuthenticationType
+                    //    )
+                    //);
+                    //identity.AddClaim(
+                    //    new Claim(
+                    //        ClaimTypes.Email,
+                    //        email,
+                    //        ClaimValueTypes.String,
+                    //        oauthOptions.AuthenticationType
+                    //    )
+                    //);
+                    //identity.AddClaim(
+                    //    new Claim(
+                    //        ClaimTypes.MobilePhone,
+                    //        mobile,
+                    //        ClaimValueTypes.String,
+                    //        oauthOptions.AuthenticationType
+                    //    )
+                    //);
+                    //identity.AddClaim(
+                    //    new Claim(
+                    //        ClaimTypes.StreetAddress,
+                    //        addr,
+                    //        ClaimValueTypes.String,
+                    //        oauthOptions.AuthenticationType
+                    //    )
+                    //);
+                    context.Identity = identity;
+                    
+                }
+                return Task.CompletedTask;
+            };
+            oauthOptions.Provider = authProvider;
             app.UseGdepAuthentication(oauthOptions);
         }
 
