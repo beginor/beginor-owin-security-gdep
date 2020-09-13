@@ -8,5 +8,5 @@ docker run --rm \
   --volume $(pwd)/jexus/default:/usr/jexus/siteconf/default \
   --publish 8088:80 \
   --name jexus-test \
-  beginor/jexus-x64:5.8.3.10
+  beginor/jexus-x64:6.2.2.1
 rm -rf $(pwd)/test/GdepTest/wwwroot/bin $(pwd)/test/GdepTest/wwwroot/web.config
