@@ -14,7 +14,7 @@
     <PackageReference Include="Beginor.Owin.Security.Aes" Version="0.2.2" />
     <PackageReference Include="Beginor.Owin.StaticFile" Version="0.3.1" />
     <PackageReference Include="Microsoft.AspNet.Identity.Core" Version="2.2.2" />
-    <PackageReference Include="Microsoft.AspNet.Identity.Owin" Version="2.2.2" />
+    <PackageReference Include="Microsoft.AspNet.Identity.Owin" Version="2.2.4" />
     <PackageReference Include="Microsoft.AspNet.WebApi.Client" Version="5.2.6" />
     <PackageReference Include="Microsoft.AspNet.WebApi.Core" Version="5.2.6" />
     <PackageReference Include="Microsoft.AspNet.WebApi.Owin" Version="5.2.6" />
